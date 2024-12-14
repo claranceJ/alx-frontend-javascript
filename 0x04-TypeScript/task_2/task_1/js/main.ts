@@ -49,3 +49,22 @@ function createEmployee(salary: number | string): DirectorInterface | TeacherInt
 console.log(createEmployee(200)); // Output: Teacher
 console.log(createEmployee(1000)); // Output: Director
 console.log(createEmployee('$500')); // Output: Director
+
+
+//---------------------function for employees--------------//
+
+function isDirector(employee: DirectorInterface | TeacherInterface): employee is DirectorInterface {
+  return 'numberOfReports' in employee;
+}
+
+function executeWork(employee: DirectorInterface | TeacherInterface) {
+  if (isDirector(employee)) {
+	employee.workDirectorTasks();
+  } else {
+	employee.workTeacherTasks();
+  }
+}
+
+// Example usage:
+console.log(executeWork(createEmployee(200))); // Output: Getting to work
+console.log(executeWork(createEmployee(1000))); // Output: Getting to director tasks
