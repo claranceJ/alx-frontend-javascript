@@ -1,29 +1,31 @@
+// Define the MajorCredits interface
 interface MajorCredits {
   credits: number;
-  kind: 'major';
+  brand: "MajorCredits"; // Unique brand identifier
 }
 
+// Define the MinorCredits interface
 interface MinorCredits {
   credits: number;
-  kind: 'minor';
+  brand: "MinorCredits"; // Unique brand identifier
 }
 
+// Function to sum MajorCredits
 function sumMajorCredits(subject1: MajorCredits, subject2: MajorCredits): MajorCredits {
-  return { credits: subject1.credits + subject2.credits, kind: 'major' };
+  return { credits: subject1.credits + subject2.credits, brand: "MajorCredits" };
 }
 
+// Function to sum MinorCredits
 function sumMinorCredits(subject1: MinorCredits, subject2: MinorCredits): MinorCredits {
-  return { credits: subject1.credits + subject2.credits, kind: 'minor' };
+  return { credits: subject1.credits + subject2.credits, brand: "MinorCredits" };
 }
 
-const math: MajorCredits = { credits: 10, kind: 'major' };
-const history: MajorCredits = { credits: 8, kind: 'major' };
+// Example Usage:
+const majorSubject1: MajorCredits = { credits: 30, brand: "MajorCredits" };
+const majorSubject2: MajorCredits = { credits: 20, brand: "MajorCredits" };
 
-const english: MinorCredits = { credits: 5, kind: 'minor' };
-const french: MinorCredits = { credits: 4, kind: 'minor' };
+const minorSubject1: MinorCredits = { credits: 15, brand: "MinorCredits" };
+const minorSubject2: MinorCredits = { credits: 10, brand: "MinorCredits" };
 
-const totalMajorCredits = sumMajorCredits(math, history);
-const totalMinorCredits = sumMinorCredits(english, french);
-
-console.log(totalMajorCredits); // Output: { credits: 18, kind: 'major' }
-console.log(totalMinorCredits); // Output: { credits: 9, kind: 'minor' }
+console.log(sumMajorCredits(majorSubject1, majorSubject2)); // { credits: 50, brand: "MajorCredits" }
+console.log(sumMinorCredits(minorSubject1, minorSubject2)); // { credits: 25, brand: "MinorCredits" }
